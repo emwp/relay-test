@@ -1,9 +1,6 @@
 import React from 'react';
+import CharacterList from './relay/queries/CharacterList';
 
-const App = () => (
-  <div>
-    <h1>Hello World</h1>
-  </div>
-);
+const App = () => <CharacterList />;
 
 export default App;

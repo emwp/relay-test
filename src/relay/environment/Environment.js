@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
 function fetchQuery(operation, variables) {
-  return fetch('https://rickandmortyapi.com/graphql/', {
+  return fetch('https://rickandmortyapi.com/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
