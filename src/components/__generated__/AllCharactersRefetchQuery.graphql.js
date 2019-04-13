@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 922fdc8db8edb305426578b056fff2ba
+ * @relayHash a7c6fc1a2251fb677bfcdced3bb20e6c
  */
 
 /* eslint-disable */
@@ -10,27 +10,29 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type AllCharacters_characters$ref = any;
-export type CharacterListQueryVariables = {||};
-export type CharacterListQueryResponse = {|
+export type AllCharactersRefetchQueryVariables = {|
+  page?: ?number
+|};
+export type AllCharactersRefetchQueryResponse = {|
   +characters: ?{|
     +$fragmentRefs: AllCharacters_characters$ref
   |}
 |};
-export type CharacterListQuery = {|
-  variables: CharacterListQueryVariables,
-  response: CharacterListQueryResponse,
+export type AllCharactersRefetchQuery = {|
+  variables: AllCharactersRefetchQueryVariables,
+  response: AllCharactersRefetchQueryResponse,
 |};
 */
 
 
 /*
-query CharacterListQuery {
+query AllCharactersRefetchQuery {
   characters {
-    ...AllCharacters_characters
+    ...AllCharacters_characters_2Pg8Wv
   }
 }
 
-fragment AllCharacters_characters on Characters {
+fragment AllCharacters_characters_2Pg8Wv on Characters {
   info {
     pages
     next
@@ -43,14 +45,23 @@ fragment AllCharacters_characters on Characters {
 }
 */
 
-const node/*: ConcreteRequest*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "page",
+    "type": "Int",
+    "defaultValue": null
+  }
+];
+return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "CharacterListQuery",
+    "name": "AllCharactersRefetchQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -64,7 +75,14 @@ const node/*: ConcreteRequest*/ = {
           {
             "kind": "FragmentSpread",
             "name": "AllCharacters_characters",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
+                "type": null
+              }
+            ]
           }
         ]
       }
@@ -72,8 +90,8 @@ const node/*: ConcreteRequest*/ = {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CharacterListQuery",
-    "argumentDefinitions": [],
+    "name": "AllCharactersRefetchQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -147,12 +165,13 @@ const node/*: ConcreteRequest*/ = {
   },
   "params": {
     "operationKind": "query",
-    "name": "CharacterListQuery",
+    "name": "AllCharactersRefetchQuery",
     "id": null,
-    "text": "query CharacterListQuery {\n  characters {\n    ...AllCharacters_characters\n  }\n}\n\nfragment AllCharacters_characters on Characters {\n  info {\n    pages\n    next\n    prev\n  }\n  results {\n    id\n    name\n  }\n}\n",
+    "text": "query AllCharactersRefetchQuery {\n  characters {\n    ...AllCharacters_characters_2Pg8Wv\n  }\n}\n\nfragment AllCharacters_characters_2Pg8Wv on Characters {\n  info {\n    pages\n    next\n    prev\n  }\n  results {\n    id\n    name\n  }\n}\n",
     "metadata": {}
   }
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '68763680495ba67cb537320c71b79c86';
+(node/*: any*/).hash = 'b61cf38df8db884ed825eff861469468';
 module.exports = node;
