@@ -11,15 +11,13 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type AllCharacters_characters$ref: FragmentReference;
 export type AllCharacters_characters = {|
-  +info: ?{|
-    +pages: ?number,
-    +next: ?number,
-    +prev: ?number,
-  |},
   +results: ?$ReadOnlyArray<?{|
     +id: string,
     +name: ?string,
   |}>,
+  +info: ?{|
+    +next: ?number
+  |},
   +$refType: AllCharacters_characters$ref,
 |};
 */
@@ -39,38 +37,6 @@ const node/*: ReaderFragment*/ = {
     }
   ],
   "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "info",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Info",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "pages",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "next",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "prev",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -95,9 +61,27 @@ const node/*: ReaderFragment*/ = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "info",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Info",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "next",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '6cde5f81ca874ef4fe397f882a1c9ab6';
+(node/*: any*/).hash = '3aa174ff003fc75675a88969c11c1210';
 module.exports = node;

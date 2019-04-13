@@ -7,10 +7,10 @@ const Characters = props => {
 
   const _loadMore = () => {
     const refetchVariables = fragmentVariables => ({
-      page: fragmentVariables.page + 1,
+      ...fragmentVariables,
+      page: characters.info.next,
     });
-    relay.refetch(refetchVariables);
-    console.log(relay);
+    relay.refetch(refetchVariables, null);
   };
 
   return (
@@ -30,21 +30,19 @@ export default createRefetchContainer(
     characters: graphql`
       fragment AllCharacters_characters on Characters
         @argumentDefinitions(page: { type: "Int", defaultValue: 1 }) {
-        info {
-          pages
-          next
-          prev
-        }
         results {
           id
           name
+        }
+        info {
+          next
         }
       }
     `,
   },
   graphql`
     query AllCharactersRefetchQuery($page: Int) {
-      characters {
+      characters: characters(page: $page) {
         ...AllCharacters_characters @arguments(page: $page)
       }
     }

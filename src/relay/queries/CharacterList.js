@@ -23,7 +23,6 @@ class CharactersList extends Component {
           if (error) {
             return <div>{error.message}</div>;
           } else if (props) {
-            console.log(props);
             return <AllCharacters characters={props.characters} />;
           }
           return <div>Loading...</div>;

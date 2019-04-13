@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 922fdc8db8edb305426578b056fff2ba
+ * @relayHash 35a10ec4f77b988fc4b8d449e7a4f8c0
  */
 
 /* eslint-disable */
@@ -31,14 +31,12 @@ query CharacterListQuery {
 }
 
 fragment AllCharacters_characters on Characters {
-  info {
-    pages
-    next
-    prev
-  }
   results {
     id
     name
+  }
+  info {
+    next
   }
 }
 */
@@ -87,38 +85,6 @@ const node/*: ConcreteRequest*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "info",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Info",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "pages",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "next",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "prev",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
             "name": "results",
             "storageKey": null,
             "args": null,
@@ -140,6 +106,24 @@ const node/*: ConcreteRequest*/ = {
                 "storageKey": null
               }
             ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "info",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Info",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "next",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           }
         ]
       }
@@ -149,7 +133,7 @@ const node/*: ConcreteRequest*/ = {
     "operationKind": "query",
     "name": "CharacterListQuery",
     "id": null,
-    "text": "query CharacterListQuery {\n  characters {\n    ...AllCharacters_characters\n  }\n}\n\nfragment AllCharacters_characters on Characters {\n  info {\n    pages\n    next\n    prev\n  }\n  results {\n    id\n    name\n  }\n}\n",
+    "text": "query CharacterListQuery {\n  characters {\n    ...AllCharacters_characters\n  }\n}\n\nfragment AllCharacters_characters on Characters {\n  results {\n    id\n    name\n  }\n  info {\n    next\n  }\n}\n",
     "metadata": {}
   }
 };
