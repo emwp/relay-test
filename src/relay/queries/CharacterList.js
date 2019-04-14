@@ -13,9 +13,7 @@ class CharactersList extends Component {
         environment={environment}
         query={graphql`
           query CharacterListQuery {
-            characters {
-              ...AllCharacters_characters
-            }
+            ...AllCharacters_query           
           }
         `}
         variables={{}}
@@ -23,7 +21,7 @@ class CharactersList extends Component {
           if (error) {
             return <div>{error.message}</div>;
           } else if (props) {
-            return <AllCharacters characters={props.characters} />;
+            return <AllCharacters query={props} />;
           }
           return <div>Loading...</div>;
         }}
