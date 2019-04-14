@@ -3,7 +3,8 @@ import graphql from 'babel-plugin-relay/macro';
 import { createRefetchContainer } from 'react-relay';
 
 const Characters = props => {
-  const { characters, relay } = props;
+  const { query, relay } = props;
+  const { characters } = query;
 
   const _loadMore = () => {
     const refetchVariables = fragmentVariables => ({
@@ -27,24 +28,24 @@ const Characters = props => {
 export default createRefetchContainer(
   Characters,
   {
-    characters: graphql`
-      fragment AllCharacters_characters on Characters
+    query: graphql`
+      fragment AllCharacters_query on Query
         @argumentDefinitions(page: { type: "Int", defaultValue: 1 }) {
-        results {
-          id
-          name
-        }
-        info {
-          next
+        characters(page: $page) {
+          results {
+            id
+            name
+          }
+          info {
+            next
+          }  
         }
       }
     `,
   },
   graphql`
     query AllCharactersRefetchQuery($page: Int) {
-      characters: characters(page: $page) {
-        ...AllCharacters_characters @arguments(page: $page)
-      }
+      ...AllCharacters_query @arguments(page: $page)
     }
   `,
 );
